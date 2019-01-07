@@ -5,5 +5,6 @@ public class My_Class {
 		LinkedList.addToList(myList);
 		System.out.println("Elements in linked list: " + myList.getListSize());
 		myList.root.printList(myList.root);
+		myList.findElement(myList);
 	}
 }

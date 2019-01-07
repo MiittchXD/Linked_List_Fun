@@ -36,21 +36,37 @@ public class LinkedList {
 				Node tempNode = new Node(tempNum);
 				list.root = tempNode;
 				list.numElements++;
+				list.root.position = list.numElements-1;
 				return addToList(list);
 			} else {
 				tempNum = Integer.parseInt(input);
 				Node tempNode = new Node(tempNum);
-				list.root.addNode(list.root, tempNode);
 				list.numElements++;
+				int temp = list.numElements;
+				list.root.addNode(list.root, tempNode, temp-1);
 				return addToList(list);
 			}
 		}
 		System.out.println("Done adding to list");
-		scanner.close();
 		return null;
 	}
 	
 	public int getListSize() {
 		return numElements;
+	}
+	
+	public void findElement(LinkedList mylist) {
+		System.out.println("Please enter a value to search for: ");
+		Scanner scanner = new Scanner(System.in);
+		String input = scanner.next();
+		int findNum = Integer.parseInt(input);
+		if (mylist.root != null) {
+			Node temp = mylist.root.searchNode(mylist.root, findNum);
+			if (temp != null) {
+				System.out.println("Value " + findNum + " found at position " + temp.position + " of the Linked List!");
+			}
+		} else {
+			System.out.println("Error: Value not found");
+		}
 	}
 }
